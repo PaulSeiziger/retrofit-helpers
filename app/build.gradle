@@ -7,7 +7,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
-        versionName "0.1.0"
+        versionName "0.1.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -35,8 +35,7 @@ dependencies {
 publish {
     groupId = 'com.dremanovich'
     artifactId = 'retrofit-helpers'
-    repoName = 'retrofit-helpers'
-    publishVersion = '0.1.0'
+    publishVersion = '0.1.1'
     desc = 'This is a simple library containing helpers for creating custom annotations in retrofit'
     licences = ['MIT']
     website = 'https://github.com/PaulSeiziger/retrofit-helpers'

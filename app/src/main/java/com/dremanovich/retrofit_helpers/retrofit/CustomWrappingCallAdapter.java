@@ -1,5 +1,7 @@
 package com.dremanovich.retrofit_helpers.retrofit;
 
+import com.dremanovich.retrofit_helpers.RequestAnnotationsContainer;
+
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 import java.util.Map;
@@ -11,12 +13,12 @@ import retrofit2.CallAdapter;
 public class CustomWrappingCallAdapter<R, T> implements CallAdapter<R, T> {
 
     private final CallAdapter<R, T> adapter;
-    private final Map<Integer, Annotation[]> registration;
+    private final RequestAnnotationsContainer container;
     private final Annotation[] info;
 
-    CustomWrappingCallAdapter(CallAdapter<R,T> adapter, Map<Integer, Annotation[]> reg, Annotation[] info) {
+    CustomWrappingCallAdapter(CallAdapter<R,T> adapter, RequestAnnotationsContainer container, Annotation[] info) {
         this.adapter = adapter;
-        this.registration = reg;
+        this.container = container;
         this.info = info;
     }
 
@@ -28,14 +30,7 @@ public class CustomWrappingCallAdapter<R, T> implements CallAdapter<R, T> {
     @Override
     public T adapt(Call<R> call) {
         Request request = call.request();
-        registration.put(identify(request), info);
+        container.register(request, info);
         return adapter.adapt(call);
-    }
-
-
-
-    private Integer identify(Request request) {
-        // this is very experimental but it does the job currently
-        return (request.url() + request.method()).hashCode();
     }
 }

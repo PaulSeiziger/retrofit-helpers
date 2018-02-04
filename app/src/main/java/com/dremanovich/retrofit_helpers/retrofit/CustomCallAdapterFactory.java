@@ -1,5 +1,7 @@
 package com.dremanovich.retrofit_helpers.retrofit;
 
+import com.dremanovich.retrofit_helpers.RequestAnnotationsContainer;
+
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 import java.util.List;
@@ -11,12 +13,12 @@ import retrofit2.Retrofit;
 public class CustomCallAdapterFactory extends CallAdapter.Factory {
 
     private final List<CallAdapter.Factory> callAdapterFactories;
-    private final Map<Integer, Annotation[]> registration;
+    private final RequestAnnotationsContainer container;
 
     public CustomCallAdapterFactory(List<CallAdapter.Factory> callAdapterFactories,
-                                    Map<Integer, Annotation[]> reg) {
+                                    RequestAnnotationsContainer container) {
         this.callAdapterFactories = callAdapterFactories;
-        this.registration = reg;
+        this.container = container;
     }
 
     @Override
@@ -26,7 +28,7 @@ public class CustomCallAdapterFactory extends CallAdapter.Factory {
                 if (adapter != null) {
                     if (annotations != null) {
                         // get whatever info you need from your annotation
-                        return new CustomWrappingCallAdapter<>(adapter, registration, annotations);
+                        return new CustomWrappingCallAdapter<>(adapter, container, annotations);
                     }
                     return adapter;
                 }
