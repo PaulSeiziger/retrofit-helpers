@@ -1,7 +1,5 @@
 package com.dremanovich.retrofit_helpers.retrofit;
 
-import android.support.annotation.NonNull;
-
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 import java.util.Map;
@@ -28,7 +26,7 @@ public class CustomWrappingCallAdapter<R, T> implements CallAdapter<R, T> {
     }
 
     @Override
-    public T adapt(@NonNull Call<R> call) {
+    public T adapt(Call<R> call) {
         Request request = call.request();
         registration.put(identify(request), info);
         return adapter.adapt(call);

@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 26
@@ -11,7 +12,7 @@ android {
     }
     buildTypes {
         debug {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         release {
@@ -23,10 +24,20 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:26.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    compile 'com.google.code.findbugs:jsr305:2.0.1'
+}
+
+publish {
+    groupId = 'com.dremanovich'
+    artifactId = 'retrofit-helpers'
+    repoName = 'retrofit-helpers'
+    publishVersion = '0.1.0'
+    desc = 'This is a simple library containing helpers for creating custom annotations in retrofit'
+    licences = ['MIT']
+    website = 'https://github.com/PaulSeiziger/retrofit-helpers'
 }

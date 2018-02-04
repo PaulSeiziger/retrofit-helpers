@@ -1,6 +1,5 @@
 package com.dremanovich.retrofit_helpers.converters;
 
-import android.support.annotation.NonNull;
 
 import com.dremanovich.retrofit_helpers.ApiException;
 
@@ -19,7 +18,7 @@ public class WrappedResponseBodyConverter<T> implements Converter<ResponseBody, 
     }
 
     @Override
-    public T convert(@NonNull ResponseBody value) throws IOException {
+    public T convert(ResponseBody value) throws IOException {
 //        Log.e("response", value.string());
         WrappedResponse<T> response = converter.convert(value);
         if (response.getResponse() != null) {

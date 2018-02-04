@@ -14,7 +14,7 @@
 
 # Uncomment this to preserve the line number information for
 # debugging stack traces.
--keepattributes SourceFile,LineNumberTable
+#-keepattributes SourceFile,LineNumberTable
 
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
@@ -29,6 +29,9 @@
 -dontwarn okio.**
 -dontwarn com.squareup.okhttp3.**
 -keep class com.squareup.okhttp3.** { *; }
+
+-keep class javax.annotation.** { *; }
+-keep interface javax.annotation.** { *; }
+
 -keep interface com.squareup.okhttp3.* { *; }
--dontwarn javax.annotation.Nullable
--dontwarn javax.annotation.ParametersAreNonnullByDefault
+-dontwarn javax.annotation.**

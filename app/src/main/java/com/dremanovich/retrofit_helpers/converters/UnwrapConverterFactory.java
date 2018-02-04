@@ -1,7 +1,5 @@
 package com.dremanovich.retrofit_helpers.converters;
 
-import android.support.annotation.Nullable;
-
 import java.lang.annotation.Annotation;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -46,13 +44,11 @@ public class UnwrapConverterFactory extends Converter.Factory {
         return new WrappedResponseBodyConverter(gsonConverter);
     }
 
-    @Nullable
     @Override
     public Converter<?, RequestBody> requestBodyConverter(Type type, Annotation[] parameterAnnotations, Annotation[] methodAnnotations, Retrofit retrofit) {
         return factory.requestBodyConverter(type, parameterAnnotations, methodAnnotations, retrofit);
     }
 
-    @Nullable
     @Override
     public Converter<?, String> stringConverter(Type type, Annotation[] annotations, Retrofit retrofit) {
         return factory.stringConverter(type, annotations, retrofit);

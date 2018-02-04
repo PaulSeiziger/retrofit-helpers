@@ -1,7 +1,5 @@
 package com.dremanovich.retrofit_helpers.retrofit;
 
-import android.support.annotation.NonNull;
-
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 import java.util.List;
@@ -22,7 +20,7 @@ public class CustomCallAdapterFactory extends CallAdapter.Factory {
     }
 
     @Override
-    public CallAdapter<?,?> get(@NonNull Type returnType, Annotation[] annotations, @NonNull Retrofit retrofit) {
+    public CallAdapter<?,?> get(Type returnType, Annotation[] annotations, Retrofit retrofit) {
             for (int i = 0; i < callAdapterFactories.size(); i++) {
                 CallAdapter<?,?> adapter = callAdapterFactories.get(i).get(returnType, annotations, retrofit);
                 if (adapter != null) {
